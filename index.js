@@ -1,9 +1,12 @@
 const express = require('express')
 const socket = require('socket.io')
 
+const port = process.env.PORT || 4000
+
 const app = express()
-const server = app.listen(4000, () => {
-    console.log('app on port 4000')
+
+const server = app.listen(port, () => {
+    console.log('app listen on', port)
 })
 
 // static files
