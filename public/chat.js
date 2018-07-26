@@ -1,5 +1,5 @@
 // make connection
-const socket = io.connect('http://localhost:4000')
+const socket = io.connect('https://warm-headland-69021.herokuapp.com/')
 
 // DOM
 const $ = val => document.getElementById(val)
