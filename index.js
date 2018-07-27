@@ -6,7 +6,7 @@ const port = process.env.PORT || 4000
 const app = express()
 
 const server = app.listen(port, () => {
-    console.log('app listen on', port)
+	console.log('app listen on', port)
 })
 
 // static files
@@ -16,9 +16,13 @@ app.use(express.static('public'))
 const io = socket(server)
 
 io.on('connection', socket => {
-    console.log('socket connection made', socket.id)
+	console.log('socket connection made', socket.id)
 
-    socket.on('chat', data => {
-        io.sockets.emit('chat', data)
-    })
+	socket.on('chat', data => {
+		io.sockets.emit('chat', data)
+	})
+
+	socket.on('typing', data => {
+		socket.broadcast.emit('typing', data)
+	})
 })
